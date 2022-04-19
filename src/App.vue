@@ -5,7 +5,7 @@
       <EditProfile :user="user" @editedUser="editedUser" />
     </div>
     <div v-if="this.curretPage === 'profile'">
-      <ProfileView :user="user" />
+      <ProfileView :user="user" :books="books" />
     </div>
   </div>
 </template>
@@ -27,8 +27,17 @@ export default {
       user: {
         full_name: 'Adam Smith',
         e_mail: 'Adam@gmail.com',
-        password: '123456'
-      }
+        password: '123456',
+        user_BooksArray: [1, 5]
+      },
+      books: [
+        { id: 1, name: 'The Russian', type: 'Fiction', available: true },
+        { id: 2, name: 'Just as I Am', type: 'Non-fiction', available: false },
+        { id: 3, name: 'The Vanishing Half', type: 'Fiction', available: true },
+        { id: 4, name: 'The Midnight Library', type: 'Fiction', available: false },
+        { id: 5, name: 'Untamed', type: 'Non-fiction', available: false },
+        { id: 6, name: 'Viscount Who Loved Me', type: 'Fiction', available: true }
+      ]
     };
   },
   methods: {
