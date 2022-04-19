@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Navbar @targetPage="targetPage"/>
+    <Navbar @targetPage="targetPage" />
     <div v-if="this.curretPage === 'editProfile'">
-      <EditProfile  :user="user"/>
+      <EditProfile :user="user" @editedUser="editedUser" />
     </div>
     <div v-if="this.curretPage === 'profile'">
-      <ProfileView :user="user"/>
+      <ProfileView :user="user" />
     </div>
   </div>
 </template>
 <script>
 import ProfileView from './components/ProfileView.vue';
 import Navbar from './components/Navbar.vue';
-import EditProfile from './components/ProfileComponents/Edit-Profile.vue'
+import EditProfile from './components/ProfileComponents/Edit-Profile.vue';
 
 export default {
   name: 'App',
@@ -34,6 +34,9 @@ export default {
   methods: {
     targetPage(targetPage) {
       this.curretPage = targetPage;
+    },
+    editedUser(updatedUser) {
+      (this.user.full_name = updatedUser.userName), (this.user.e_mail = updatedUser.email), (this.user.password = updatedUser.password);
     }
   }
 };
