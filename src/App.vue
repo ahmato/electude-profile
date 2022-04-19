@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <Navbar @targetPage="targetPage" />
-    <ProfileView :user="user" />
+    <Navbar @targetPage="targetPage"/>
+    <div v-if="this.curretPage === 'editProfile'">
+      <EditProfile  :user="user"/>
+    </div>
+    <div v-if="this.curretPage === 'profile'">
+      <ProfileView :user="user"/>
+    </div>
   </div>
 </template>
 <script>
 import ProfileView from './components/ProfileView.vue';
 import Navbar from './components/Navbar.vue';
+import EditProfile from './components/ProfileComponents/Edit-Profile.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileView,
-    Navbar
+    Navbar,
+    EditProfile
   },
   data() {
     return {
