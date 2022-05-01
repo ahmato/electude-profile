@@ -4,6 +4,9 @@
     <div v-if="this.curretPage === 'editProfile'">
       <EditProfile :user="user" @editedUser="editedUser" />
     </div>
+    <div>
+      <TodoList />
+    </div>
     <div v-if="this.curretPage === 'profile'">
       <ProfileView :user="user" :books="books" />
     </div>
@@ -13,13 +16,15 @@
 import ProfileView from './components/ProfileView.vue';
 import Navbar from './components/Navbar.vue';
 import EditProfile from './components/ProfileComponents/Edit-Profile.vue';
+import TodoList from './components/Test-components/TodoList.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileView,
     Navbar,
-    EditProfile
+    EditProfile,
+    TodoList
   },
   data() {
     return {
